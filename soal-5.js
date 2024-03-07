@@ -46,15 +46,15 @@ const hitungTotalPenjualan = (data) => {
     bukuTerjual = 0;
   for (let a = 0; a < data.length; a++) {
     const { hargaBeli, hargaJual, totalTerjual, penulis, namaProduk } = data[a];
-    totalModal = totalModal + hargaBeli;
-    totalUntung = totalUntung + (hargaJual - hargaBeli);
+    totalModal = totalModal + (hargaBeli * totalTerjual);
+    totalUntung = totalUntung + ((hargaJual - hargaBeli)*totalTerjual);
     if (totalTerjual > bukuTerjual) {
       bukuTerjual = totalTerjual;
       penulistTerlaris = penulis;
       bukuTerlaris = namaProduk;
     }
   }
-  PresentaseUntung = (totalUntung / totalModal) * 100;
+  PresentaseUntung = ((totalUntung / totalModal) * 100).toFixed(2);
 
   return {
     totalKeuntunga: `Rp. ${totalUntung.toLocaleString()}`,
