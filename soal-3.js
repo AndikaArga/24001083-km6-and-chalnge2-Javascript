@@ -1,7 +1,7 @@
 const getAngkaTerbesarKedua = (dataAngka) => {
   if (!Array.isArray(dataAngka)) {
     return "ini bukan array";
-  } else if (Array.isArray(dataAngka)) {
+  } else {
     if (dataAngka.length === 0) {
       return "array kosong";
     } else if (dataAngka.length === 1) {
@@ -22,6 +22,7 @@ const dataAngka2 = [];
 
 console.log(getAngkaTerbesarKedua(dataAngka));
 console.log(getAngkaTerbesarKedua({}));
+console.log(getAngkaTerbesarKedua([]));
 console.log(getAngkaTerbesarKedua([1]));
 console.log(getAngkaTerbesarKedua(2));
 console.log(getAngkaTerbesarKedua());
