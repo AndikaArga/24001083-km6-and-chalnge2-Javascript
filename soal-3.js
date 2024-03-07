@@ -18,7 +18,6 @@ const getAngkaTerbesarKedua = (dataAngka) => {
 };
 
 const dataAngka = [9, 9, 9, 7, 4, 3, 2, 2, 7];
-const dataAngka2 = [];
 
 console.log(getAngkaTerbesarKedua(dataAngka));
 console.log(getAngkaTerbesarKedua({}));
