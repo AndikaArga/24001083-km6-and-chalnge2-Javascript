@@ -1,7 +1,5 @@
 const getAngkaTerbesarKedua = (dataAngka) => {
-  if (dataAngka === undefined) {
-    return "ini mah kosonngan banget";
-  } else if (!Array.isArray(dataAngka)) {
+  if (!Array.isArray(dataAngka)) {
     return "ini bukan array";
   } else if (Array.isArray(dataAngka)) {
     if (dataAngka.length === 0) {
