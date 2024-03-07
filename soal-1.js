@@ -7,4 +7,4 @@ const kalimat2 =
   "Gunung bromo tak akan mampu menggambarkan besarnya cintaku padamu :D";
 
 console.log(changeword("mencintai", "membenci", kalimat1));
-console.log(changeword("bromo", "semerwwwu", kalimat2));
+console.log(changeword("bromo", "semeru", kalimat2));
