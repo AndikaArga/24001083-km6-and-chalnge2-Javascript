@@ -1,5 +1,5 @@
 const checkTypeNumber = (...givenNumber) => {
-  if (givenNumber === undefined) return "error : data kosong";
+  if (givenNumber === undefined) return "error : Bro where is the parameter?";
   if (givenNumber.length > 1) return "error : terlalu banyak data";
   const angka = givenNumber[0];
   if (typeof angka === "number") {
@@ -9,7 +9,7 @@ const checkTypeNumber = (...givenNumber) => {
       return "ganjil";
     }
   } else {
-    return "error : tipe datanya bukan ini";
+    return "error : Invalid data type";
   }
 };
 
