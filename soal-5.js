@@ -38,6 +38,10 @@ const dataPenjualanNovel = [
 ];
 
 const hitungTotalPenjualan = (data) => {
+if (data === undefined) return "Error : tidak ada data yang ditemukan"
+if(!(data instanceof Array)) return "Error : kesalahan tipe data"
+if(data.length === 0) return "Error : array kosong apa yang mau diproses ?"
+
   const totalModal = data
     .map((a) => (a.sisaStok + a.totalTerjual) * a.hargaBeli)
     .reduce((total, nilai) => total + nilai);
@@ -59,3 +63,8 @@ const hitungTotalPenjualan = (data) => {
 };
 
 console.log(hitungTotalPenjualan(dataPenjualanNovel));
+console.log(hitungTotalPenjualan());
+console.log(hitungTotalPenjualan([]));
+console.log(hitungTotalPenjualan({}));
+console.log(hitungTotalPenjualan());
+console.log(hitungTotalPenjualan("2"));
