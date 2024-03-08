@@ -27,7 +27,7 @@ const dataPenjualanPakAldi = [
 
 const hitungTotalPenjualan = (data) => {
   if(data === undefined) return "Error : parameternya enggak ada nih"
-  if(!(data instanceof Array)) return "Error : tipe data bukan ini nih"
+  if(!(data instanceof Array)) return "Error : kesalahan tipe data"
   if(data.length === 0) return "Error : array kosong apa yang mau diproses ?"
   const terjual = data.map((a) => {
     console.log(`${a.kategori} terjual ${a.totalTerjual} buah`);
@@ -35,7 +35,7 @@ const hitungTotalPenjualan = (data) => {
   });
   const totalTerjual = terjual.reduce((total, nilai) => total + nilai);
 
-  return `total sepatu yang terjual ${totalTerjual} buah`;
+  return totalTerjual;
 };
 
 console.log(hitungTotalPenjualan(dataPenjualanPakAldi));
