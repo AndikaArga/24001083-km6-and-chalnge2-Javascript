@@ -26,13 +26,21 @@ const dataPenjualanPakAldi = [
 ];
 
 const hitungTotalPenjualan = (data) => {
-  let total = 0;
-  for (let a = 0; a < data.length; a++) {
-    const { kategori, totalTerjual } = data[a];
-    console.log(`${kategori} terjual = ${totalTerjual} buah`);
-    total = total + totalTerjual;
-  }
-  return `total semua = ${total} buah`;
+  if(data === undefined) return "Error : parameternya enggak ada nih"
+  if(!(data instanceof Array)) return "Error : kesalahan tipe data"
+  if(data.length === 0) return "Error : array kosong apa yang mau diproses ?"
+  const terjual = data.map((a) => {
+    console.log(`${a.kategori} terjual ${a.totalTerjual} buah`);
+    return a.totalTerjual;
+  });
+  const totalTerjual = terjual.reduce((total, nilai) => total + nilai);
+
+  return totalTerjual;
 };
 
 console.log(hitungTotalPenjualan(dataPenjualanPakAldi));
+console.log(hitungTotalPenjualan(null));
+console.log(hitungTotalPenjualan(1));
+console.log(hitungTotalPenjualan([]));
+console.log(hitungTotalPenjualan({}));
+

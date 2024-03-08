@@ -38,31 +38,33 @@ const dataPenjualanNovel = [
 ];
 
 const hitungTotalPenjualan = (data) => {
-  let totalUntung = 0,
-    totalModal = 0,
-    bukuTerlaris = "",
-    penulistTerlaris = "",
-    PresentaseUntung = 0,
-    bukuTerjual = 0;
-  for (let a = 0; a < data.length; a++) {
-    const { hargaBeli, hargaJual, totalTerjual, penulis, namaProduk } = data[a];
-    totalModal = totalModal + hargaBeli;
-    totalUntung = totalUntung + (hargaJual - hargaBeli);
-    if (totalTerjual > bukuTerjual) {
-      bukuTerjual = totalTerjual;
-      penulistTerlaris = penulis;
-      bukuTerlaris = namaProduk;
-    }
-  }
-  PresentaseUntung = (totalUntung / totalModal) * 100;
+if (data === undefined) return "Error : tidak ada data yang ditemukan"
+if(!(data instanceof Array)) return "Error : kesalahan tipe data"
+if(data.length === 0) return "Error : array kosong apa yang mau diproses ?"
 
+  const totalModal = data
+    .map((a) => (a.sisaStok + a.totalTerjual) * a.hargaBeli)
+    .reduce((total, nilai) => total + nilai);
+  const totalKeuntungan = data
+    .map((a) => (a.hargaJual - a.hargaBeli) * a.totalTerjual)
+    .reduce((total, nilai) => total + nilai);
+  const persentaseKeuntungan = ((totalKeuntungan / totalModal) * 100).toFixed(
+    2
+  );
+  const penjualanTerbanyak = Math.max(...data.map((a) => a.totalTerjual));
+  const bukuTerlaris = data.find((e) => e.totalTerjual === penjualanTerbanyak);
   return {
-    totalKeuntunga: `Rp. ${totalUntung.toLocaleString()}`,
     totalModal: `Rp. ${totalModal.toLocaleString()}`,
-    presentaseKeuntungan: PresentaseUntung.toLocaleString() + "%",
-    produkBukuTerlaris: bukuTerlaris,
-    penulisTerlaris: penulistTerlaris,
+    totalKeuntungan: `Rp. ${totalKeuntungan.toLocaleString()}`,
+    persentaseKeuntungan: `${persentaseKeuntungan}%`,
+    penulisTerlaris: `${bukuTerlaris.namaProduk}`,
+    bukuTerlaris: `${bukuTerlaris.penulis}`,
   };
 };
 
 console.log(hitungTotalPenjualan(dataPenjualanNovel));
+console.log(hitungTotalPenjualan());
+console.log(hitungTotalPenjualan([]));
+console.log(hitungTotalPenjualan({}));
+console.log(hitungTotalPenjualan());
+console.log(hitungTotalPenjualan("2"));
