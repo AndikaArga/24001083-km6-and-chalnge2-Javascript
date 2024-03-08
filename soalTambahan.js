@@ -1,4 +1,6 @@
-const hitungFrequency = (data) => {
+const hitungFrequency = (...dataArray) => {
+  if(dataArray.length > 1) return "error : data yang dimasukkan terlalu banyak"
+  const data = dataArray[0];
   if (data === undefined) return "error : tidak ada parameter";
   if (!Array.isArray(data)) return "error : bukan array";
   if (data.length === 0) return "error : arraynya masih kosong";
@@ -36,6 +38,7 @@ console.log(hitungFrequency(arr1));
 console.log(hitungFrequency(arr3));
 console.log(hitungFrequency(arr4));
 console.log(hitungFrequency(arr2,arr1));
+console.log(hitungFrequency([]));
 
 
 
